@@ -1,0 +1,63 @@
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/index.js"></script>
+    <script>
+        if (window.addEventListener) {
+            window.addEventListener('load', WindowLoad, false);
+        }
+
+        function WindowLoad() {
+            reload();
+        }
+    </script>
+</head>
+
+<body>
+    <div id="navSide">
+        <a href="../index.html"><img src="../img/globus.png" alt="globus.png"></a>
+
+        <h2>Menu</h2>
+        
+        <ul>
+            <li><a href="/topic/topic1.html">Topic1</a></li>
+            <li><a href="/topic/topic2.html">Topic2</a></li>
+            <li><a href="/topic/topic3.html">Topic3</a></li>
+            <li><a href="/topic/topic4.html">Topic4</a></li>
+            <li><a href="/topic/topic5.html">Topic5</a></li>
+            <li><a id="currentActive" href="/topic/topic6.html">Topic6</a></li>
+            <li><a href="/topic/topic7.html">Topic7</a></li>
+            <li><a href="/topic/topic8.html">Topic8</a></li>
+            <li><a href="/topic/topic9.html">Topic9</a></li>
+            <li><a href="/topic/topic10.html">Topic10</a></li>           
+        </ul>
+    </div>
+
+    <div id="navTop">
+        <nav id="topNav" >
+            <ul>
+                <li><a href="">Benutzer</a></li>
+                <li><a onclick="openEditor()">Edit</a></li>
+                <input type="text" placeholder="Suche..." id="searchBar">
+            </ul>
+        </nav>
+    </div>
+    
+    
+
+    <div id="mainContent">
+        <h1>Topic6</h1>
+
+        <p id="topic6Text">
+            
+        </p>
+    </div>
+    
+
+</body>
+
+</html>
