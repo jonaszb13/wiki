@@ -1,21 +1,19 @@
-<html lang="en">
+<html lang="de">
     <%- include("./partials/head.ejs") %>
 
 <body>
     <%- include("./partials/menu.ejs") %>
 
     
-    <div class="create-aticle content">
-        <form action="/articles" method="POST">
-            <label for="title">Article title:</label>
-            <input type="text" id="title" name="title" required>
-            <label for="keyword">Article keywords:</label>
-            <input type="array" id="keyword" name="keyword" required>
-            <label for="snippet">Aritcle snippet:</label>
-            <input type="text" id="snippet" name="snippet" requierd>
-            <label for="body">Article body:</label>
-            <textarea id="body" name="body" required></textarea>
-            <button>Speichern</button>
+    <div class="create-articleContent">
+
+        <form class="formElement" action="/articles" method="POST">
+            <h2>Erstelle einen neuen Artikel</h2>
+            <input placeholder="Artikel Titel:" type="text" id="title" name="title" required>
+            <input placeholder="Keywords: " type="text" id="keywords" name="keywords" required>
+            <input placeholder="Kurzfassung: " type="text" id="snippet" name="snippet" requierd>
+            <textarea placeholder="Body: " id="body" name="body" required></textarea>
+            <button class="btnSub">Erstellen</button>
         </form>
     </div>    
 

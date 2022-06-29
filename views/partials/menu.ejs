@@ -4,24 +4,26 @@
     <h2>Menu</h2>
     
     <ul>
-        <li><a href="/topic/topic1.html">Topic1</a></li>
-        <li><a href="/topic/topic2.html">Topic2</a></li>
-        <li><a href="/topic/topic3.html">Topic3</a></li>
-        <li><a href="/topic/topic4.html">Topic4</a></li>
-        <li><a href="/topic/topic5.html">Topic5</a></li>
-        <li><a href="/topic/topic6.html">Topic6</a></li>
-        <li><a href="/topic/topic7.html">Topic7</a></li>
-        <li><a href="/topic/topic8.html">Topic8</a></li>
-        <li><a href="/topic/topic9.html">Topic9</a></li>
-        <li><a href="/topic/topic10.html">Topic10</a></li>           
+        <% if (articles.length > 0) { %>
+            <% articles.forEach(article => { %>
+            	<li>
+                    <a href="/articles/<%= article._id %>">
+                        <p class="menu"><%= article.title %></p>
+                    </a>
+                </li>
+            <% }) %>
+        <% } else { %>
+            <p>No Articles</p>
+        <% } %>
+        
     </ul>
 </div>
 
 <div id="navTop">
     <nav id="topNav" >
         <ul>
-            <li><a href="">Benutzer</a></li>
-            <li><a onclick="openEditor()">Edit</a></li>
+            <li><a class="user" href="">Benutzer</a></li>
+            <li><a href="/articles/create">Neuen Artikel erstellen</a></li>
             <input type="text" placeholder="Suche..." id="searchBar">
         </ul>
     </nav>

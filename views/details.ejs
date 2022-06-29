@@ -1,15 +1,22 @@
-<html lang="en">
+<html lang="de">
 <%- include("./partials/head.ejs") %>
 
 <body>
+
   <%- include("./partials/menu.ejs") %>
 
-  <div class="details content">
+
+  <div class="detailsContent">
     <h2><%= article.title %></h2>
+    <h5><%= article.snippet %></h5>
     <div class="content">
       <p><%= article.body %></p>
     </div>
-    <a class="delete" data-doc="<%= article._id %>">delete</a>
+    <div class="links">
+      <a class="home" href="/">Home</a>
+      <a class="edit" href="/articles/edit">Edit</a>
+      <a class="delete" data-doc="<%= article._id %>">delete</a>
+    </div>
   </div>
 
   <script>

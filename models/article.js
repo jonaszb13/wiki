@@ -7,6 +7,10 @@ const articleSchema = new Schema({
         required: true,
     },
     keywords: {
+        type: Array,
+        required: false,
+    },
+    snippet: {
         type: String,
         required: true,
     },

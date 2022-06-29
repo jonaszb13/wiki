@@ -10,20 +10,34 @@ const article_index = (req, res) => {
     });
 }
 
+let test
+
 const article_details = (req, res) => {
   const id = req.params.id;
   Article.findById(id)
     .then(result => {
-      res.render('details', { article: result, title: 'Article Details' });
+      test = result;
+      Article.find().sort({ createdAt: +1})
+        .then(result => {
+          res.render('details', {articles: result, article: test, title: 'Article Details' })
+    })
+      //res.render('details', {article: result, title: 'Article Details' });
     })
     .catch(err => {
       console.log(err);
       res.render('404', { title: 'Article not found' });
     });
+  
 }
 
 const article_create_get = (req, res) => {
-  res.render('create', { title: 'Create a new article' });
+  Article.find().sort({ created: +1 })
+    .then(result => {
+      res.render('create', { articles: result, title: 'Create a new article' });
+    })
+    .catch(err => {
+      console.log(err);
+    })
 }
 
 const article_create_post = (req, res) => {

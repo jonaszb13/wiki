@@ -3,9 +3,10 @@ html, body {
     overflow: hidden;
     margin: 0;
     height: 100%;
+    background-color: rgb(250, 250, 250);
 }
 
-h2, a, p {
+h2, h3, a, p {
     margin: 0;
     font-family: sans-serif;
 }
@@ -27,14 +28,6 @@ h2, a, p {
     background-color: rgb(240, 240, 240);
     box-sizing: border-box;
     border-right: 1px solid black;
-}
-
-#mainContent {
-    position: relative;
-    margin-left: 15em;
-    height: 100%;
-    padding: 0;
-    background-color: rgb(250, 250, 250);
 }
 
 ul {
@@ -67,6 +60,10 @@ li a {
     color: black;
 }
 
+.user {
+    padding-right: .5%;
+}
+
 #topNav input[type=text] {
     float: right;
     padding: 6px;
@@ -91,24 +88,24 @@ li a {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#navSide li a {
-    margin-left: 3em;
+#navSide li p {
+    margin-left: 1.5em;
     line-height: 2em;
     font-size: 20px;
     text-decoration: none;
     color: black;
 }
 
-#navSide li a:hover {
-    margin-left: 3.3em;
-    font-size: 25px;
+#navSide li p:hover {
+    margin-left: 1.8em;
+    font-size: 20px;
     animation: 3s linear .1s;
     cursor: pointer;
 }
 
-#navSide li a:active {
-    margin-left: 3.3em;
-    font-size: 25px;
+#navSide li p:active {
+    margin-left: 1.8em;
+    font-size: 20px;
 }
 
 #currentActive {
@@ -119,23 +116,27 @@ li a {
 
 .articlesContent {
     position: relative;
+    margin-left: 18%;
+    margin-top: 2%;
+    background-color: rgb(250, 250, 250);
 }
 
 .articlesContent h2 {
-    padding-top: 1em;
-    padding-left: 15%;
+    padding-top: 2%;
     font-size: 50px;
 }
 
 .articlesContent p {
-    padding-left: 18%;
+    padding-left: 3.5%;
     font-size: 20px;
+    color: black;
 }
 
 .articlesContent h3 {
-    padding-left: 18%;
-    font-size: 20px;
+    padding-left: 2%;
+    font-size: 25px;
     color: black;
+    margin-top: .7%;
 }
 
 .articlesContent h3:hover {
@@ -144,4 +145,123 @@ li a {
 
 .single {
     text-decoration: none;
+}
+
+.detailsContent {
+    position: relative;
+    margin-left: 18%;
+    margin-top: 2%;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 70%;
+    padding: 1%;
+    background-color: lightgray;
+    box-shadow: 5px 7px 10px grey;    
+}
+
+.detailsContent h2 {
+    font-size: 40px;
+    padding-top: 1%;
+}
+
+.detailsContent h5 {
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 30px;
+    margin: .2%;
+    padding-left: 1%;
+    margin-bottom: 1%;
+}
+
+.content {
+    padding-left: 2%;
+}
+
+.detailsContent p {
+    font-size: 25px;
+    font-weight: normal;
+}
+
+.delete:hover {
+    color: red;
+}
+.delete, .edit, .home {
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: black;
+    cursor: pointer;
+    padding: 2px 6px 2px 6px;
+    border-radius: 5px;
+    font-size: 17px;
+    position: relative;
+}
+
+.links {
+    position: relative;
+    margin-top: 3%;
+}
+
+.create-articleContent {
+    position: relative;
+    margin: 2% auto 0% auto;
+    padding: 2%;
+    border-radius: 5px;
+    display: flex;
+    width: 800px;
+    background-color: lightgrey;
+    font-family: sans-serif;
+}
+
+#body {
+    width: 70%;
+    height: 300px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+    display: flex;
+    margin: 0px auto 0px auto;
+    font-family: sans-serif;
+}
+
+.formElement {
+    width: 100%;
+}
+
+.formElement h2 {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: black;
+}
+
+.formElement input {
+    width: 70%;
+    margin: 0px auto 20px auto;
+    display: flex;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 15px;
+    font-family: sans-serif;
+}
+
+.btnSub {
+    background-color: #f8f8f8;
+    border: 2px solid #ccc;
+    color: darkslategrey;
+    padding: 15px 15%;
+    margin: 10px auto 0px auto;
+    text-align: center;
+    display: flex;
+    text-decoration: none;
+    font-size: 16px;
+    
 }
