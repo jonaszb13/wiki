@@ -1,13 +1,13 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+require('dotenv').config();
 const articleRoutes = require('./routes/articleRoutes')
 
 const app = express();
 
-const dbURI = "mongodb+srv://root:7h54PIzBK4Z1y4u5@cluster0.aen15qn.mongodb.net/?retryWrites=true&w=majority";
+const dbURI = "mongodb+srv://" + process.env.USER + ":" + process.env.PASS + "@cluster0.aen15qn.mongodb.net/?retryWrites=true&w=majority";
 
-//enviroment variabel to keep password form public access in an extern enviroment
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(result => app.listen(3000))
