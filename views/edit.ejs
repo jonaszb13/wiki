@@ -1,0 +1,19 @@
+<html lang="de">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/menu.ejs") %>
+
+  <form class="formElement" action="/articles/<%= article._id %>" method="POST">
+    <h2>Artikel bearbeiten</h2>
+    <input placeholder="Artikel Titel:" type="text" id="title" name="title" value="<%= article.title %>" required>
+    <textarea name="old_id" id="old_id"><%= article._id %></textarea>
+    <input placeholder="Keywords: " type="text" id="keywords" name="keywords" value="<%= article.keywords %>" required>
+    <input placeholder="Kurzfassung: " type="text" id="snippet" name="snippet" value="<%= article.snippet %>" requierd>
+    <textarea placeholder="Body: " id="body" name="body" required><%= article.body %></textarea>
+    <button class="btnSub">Änderungen speichern</button>
+    <a href="/articles/<%= article._id %>">Zurück</a>
+</form>
+
+</body>
+</html>

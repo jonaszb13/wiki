@@ -14,10 +14,18 @@
     </div>
     <div class="links">
       <a class="home" href="/">Home</a>
-      <a class="edit" href="/articles/edit">Edit</a>
+      <a class="edit" href="/articles/edit/<%= article._id %>">Edit</a>
       <a class="delete" data-doc="<%= article._id %>">delete</a>
     </div>
   </div>
+
+  <% if (olds.length > 0) { %>
+    <% olds.forEach( old => { %> 
+  <p><%= old._id %></p>
+  <% }) %>
+    <% } else { %>
+      <p>Keine vorherigen Versionen vorhanden</p>
+    <% } %>
 
   <script>
     const trashcan = document.querySelector('a.delete');
