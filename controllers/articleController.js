@@ -87,7 +87,7 @@ const article_edit_post = (req, res) => {
       const id = req.params.id;
       Article.findByIdAndUpdate(id, req.body)
         .then(result => {
-          res.redirect('/articles');
+          res.redirect('/articles/' + id);
         })
         .catch(err => {
           console.log(err);
