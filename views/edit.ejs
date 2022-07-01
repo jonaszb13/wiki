@@ -7,13 +7,38 @@
   <form class="formElement" action="/articles/<%= article._id %>" method="POST">
     <h2>Artikel bearbeiten</h2>
     <input placeholder="Artikel Titel:" type="text" id="title" name="title" value="<%= article.title %>" required>
-    <textarea name="old_id" id="old_id"><%= article._id %></textarea>
+    <textarea style="display: none;" name="old_id" id="old_id"><%= article._id %></textarea>
     <input placeholder="Keywords: " type="text" id="keywords" name="keywords" value="<%= article.keywords %>" required>
     <input placeholder="Kurzfassung: " type="text" id="snippet" name="snippet" value="<%= article.snippet %>" requierd>
     <textarea placeholder="Body: " id="body" name="body" required><%= article.body %></textarea>
-    <button class="btnSub">Änderungen speichern</button>
-    <a href="/articles/<%= article._id %>">Zurück</a>
+    <button class="btnEdit">Änderungen speichern</button>
+    <a class="btnBack" href="/articles/<%= article._id %>">Zurück</a>
+    <div class="versions">
+      <% if (olds.length > 0) { %>
+        <% let count = 0 %>
+        <% olds.forEach( old => { %>
+          <% count = count + 1 %>
+            <a class="version" onclick="restore('<%= old.title %>', '<%= old.keywords %>', '<%= old.snippet %>', '<%= old.body %>')">Version <%= count %></a>
+        <% }) %>
+      <% } else { %>
+        <p>Keine vorherigen Versionen vorhanden</p>
+      <% } %>
+    </div>
+
 </form>
+
+<script>
+
+  function restore(title, keywords, snippet, body) {
+    document.getElementById('title').value = title;
+    document.getElementById('keywords').value = keywords;
+    document.getElementById('snippet').value = snippet;
+    document.getElementById('body').value = body
+  }
+
+
+
+</script>
 
 </body>
 </html>

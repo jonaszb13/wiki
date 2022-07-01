@@ -19,14 +19,6 @@
     </div>
   </div>
 
-  <% if (olds.length > 0) { %>
-    <% olds.forEach( old => { %> 
-  <p><%= old._id %></p>
-  <% }) %>
-    <% } else { %>
-      <p>Keine vorherigen Versionen vorhanden</p>
-    <% } %>
-
   <script>
     const trashcan = document.querySelector('a.delete');
     trashcan.addEventListener('click', (e) => {

@@ -11,6 +11,15 @@ const article_index = (req, res) => {
     });
 }
 
+const article_search = (req, res) => {
+  Article.find({ title: { $regex: "", $options: "i" }}, function(err, docs) {
+    res.render('test', {data: docs})
+  })
+}
+
+// search als get request and den server 
+
+
 let test
 
 const article_details = (req, res) => {
@@ -18,14 +27,10 @@ const article_details = (req, res) => {
   Article.findById(id)
     .then(result => {
       test = result;
-      const users = Old.find({ old_id: id})
-      .then(result => {
-        oldID = result;
-        Article.find().sort({ createdAt: +1})
+      Article.find().sort({ createdAt: +1})
         .then(result => {
-          res.render('details', {articles: result, olds: oldID, article: test, title: 'Article Details' })
+          res.render('details', {articles: result, article: test, title: 'Article Details' })
       })
-    })
     })
     .catch(err => {
       console.log(err);
@@ -60,10 +65,14 @@ const article_edit_get = (req, res) => {
       Article.findById(id)
       .then(result => {
         test = result;
-        Article.find().sort({ createdAt: +1})
+        Old.find({ old_id: id})
           .then(result => {
-            res.render('edit', {articles: result, article: test, title: 'Artikel bearbeiten' })
-      })
+            oldID = result
+            Article.find().sort({ createdAt: +1})
+          .then(result => {
+            res.render('edit', {articles: result, olds: oldID, article: test, title: 'Artikel bearbeiten' })
+          })
+        })
       })
       .catch(err => {
         console.log(err);
@@ -107,9 +116,8 @@ const article_delete = (req, res) => {
     });
 }
 
-const test_evn = (req, res) => {
-  res.render('test')
-
+const test_evn = (req, res) => {  
+  
 }
 
 module.exports = {
