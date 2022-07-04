@@ -3,6 +3,8 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const articleRoutes = require('./routes/articleRoutes')
+const cors = require('cors')
+
 
 const app = express();
 
@@ -22,7 +24,6 @@ app.use((req, res, next) => {
   res.locals.path = req.path;
   next();
 });
-
 
 app.get('/', (req, res) => {
   res.redirect('/articles');

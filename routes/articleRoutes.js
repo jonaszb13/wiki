@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/create', articleController.article_create_get);
 router.get('/edit/:id', articleController.article_edit_get);
-router.get('/test', articleController.test_evn);
+router.get('/find', articleController.article_search);
 router.get('/', articleController.article_index);
 router.post('/', articleController.article_create_post);
 router.get('/:id', articleController.article_details);

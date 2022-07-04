@@ -1,10 +1,11 @@
 const Article = require('../models/article');
 const Old = require('../models/old')
 
+
 const article_index = (req, res) => {
   Article.find().sort({ createdAt: +1 })
     .then(result => {
-      res.render('index', { articles: result, title: 'All articles' });
+      res.render('index', { articles: result, articlesMain: result, heading: "Alle Artikel", title: 'All articles' });
     })
     .catch(err => {
       console.log(err);
@@ -12,12 +13,18 @@ const article_index = (req, res) => {
 }
 
 const article_search = (req, res) => {
-  Article.find({ title: { $regex: "", $options: "i" }}, function(err, docs) {
-    res.render('test', {data: docs})
-  })
+  Article.find().sort({ createdAt: +1 })
+    .then(result => {
+      let query = req.query.search
+      console.log(query);
+      Article.find({ title: { $regex: query, $options: "i" } }, function(err, docs) {
+        console.log(docs)
+        res.render('index', { articles: result, articlesMain: docs, search: query, heading: 'Suchergebnisse für: "' + query + '"', title: 'Artikel mit: "' + query + '"' })
+      })
+      
+    })
+  
 }
-
-// search als get request and den server 
 
 
 let test
@@ -122,6 +129,7 @@ const test_evn = (req, res) => {
 
 module.exports = {
   article_index, 
+  article_search,
   article_details, 
   article_create_get, 
   article_create_post, 

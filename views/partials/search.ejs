@@ -1,0 +1,12 @@
+<script>
+    document.getElementById('searchBar').addEventListener('change', e => {
+      
+      let input = '';
+      input = document.getElementById('searchBar').value
+
+      var refresh = "/articles/find" + "?search=" + input;
+      window.location.href = refresh      
+  
+    })
+    
+  </script>

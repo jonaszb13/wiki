@@ -5,37 +5,74 @@
   <%- include("./partials/menu.ejs") %>
 
   <div class="articlesContent">
-    <h2>All Articles</h2>
+    <h2><%= heading %></h2>
 
-    <% if (articles.length > 0) { %>
-      <% articles.forEach(article => { %>
-        <a class="single" href="/articles/<%= article._id %>">
-          <h3 class="title"><%= article.title %></h3>
-          <p class="snippet"><%= article.snippet %></p>
-        </a>
-      <% }) %>
+    <% if (articlesMain.length > 0) { %>
+      <% articlesMain.slice(0, 1).forEach(article => { %>
+        <div class="firstArticle">
+          <a class="single" href="/articles/<%= article._id %>">
+            <h3 class="title"><%= article.title %></h3>
+            <p class="snippet"><%= article.snippet %></p>
+            <p class="body"><%= article.body %></p>
+          </a>
+        </div>
+        <% }) %>
+    
+      <% articlesMain.slice(1, 2).forEach(article => { %>
+        <div class="secondArticle">
+          <a class="single" href="/articles/<%= article._id %>">
+            <h3 class="title"><%= article.title %></h3>
+            <p class="snippet"><%= article.snippet %></p>
+            <p class="body"><%= article.body %></p>
+          </a>
+        </div>
+        <% }) %>
+    
+      <% articlesMain.slice(2, 3).forEach(article => { %>
+        <div class="thirdArticle">
+          <a class="single" href="/articles/<%= article._id %>">
+            <h3 class="title"><%= article.title %></h3>
+            <p class="snippet"><%= article.snippet %></p>
+            <p class="body"><%= article.body %></p>
+          </a>
+        </div>
+        <% }) %>
+
+      <% articlesMain.slice(3, 4).forEach(article => { %>
+        <div class="fourthArticle">
+          <a class="single" href="/articles/<%= article._id %>">
+            <h3 class="title"><%= article.title %></h3>
+            <p class="snippet"><%= article.snippet %></p>
+            <p class="body"><%= article.body %></p>
+          </a>
+        </div>
+        <% }) %>
+    
+      <% articlesMain.slice(4, 5).forEach(article => { %>
+        <div class="fifthArticle">
+          <a class="single" href="/articles/<%= article._id %>">
+            <h3 class="title"><%= article.title %></h3>
+            <p class="snippet"><%= article.snippet %></p>
+            <p class="body"><%= article.body %></p>
+          </a>
+        </div>
+        <% }) %>
+    
+        <div class="allArticles">
+    
+        </div>
+
     <% } else { %>
       <p>There are no articles to display...</p>
     <% } %>
+
     
+
+
   </div>
 
-
-  <script>
-
-    document.getElementById('searchBar').addEventListener('change', e => {
-      
-      let input = '';
-      input = document.getElementById('searchBar').value
-
-      var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + "/" + input;    
-      window.history.pushState({ path: refresh }, '', refresh);      
-
-      //js async function to pass seachBar value to url without refreshing the page
+  <%- include("./partials/search.ejs") %>
   
-    })
-    
-  </script>
 
 </body>
 </html>

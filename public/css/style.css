@@ -12,6 +12,8 @@ h2, h3, a, p {
     font-family: sans-serif;
 }
 
+/*--------------------------- Menu and Navigation -----------------------------*/
+
 #navTop {
     margin: 0;
     padding: 0;
@@ -115,6 +117,9 @@ li a {
 }
 
 
+/*----------------------------------- Landingpage - Dashboard -----------------------------------*/
+
+
 .articlesContent {
     position: relative;
     margin-left: 18%;
@@ -123,8 +128,9 @@ li a {
 }
 
 .articlesContent h2 {
-    padding-top: 2%;
+    padding-top: 1%;
     font-size: 50px;
+    padding-bottom: 1%;
 }
 
 .articlesContent p {
@@ -146,7 +152,71 @@ li a {
 
 .single {
     text-decoration: none;
+    padding: 5px 7px;
+    width: 800px;
+    height: 800px;
 }
+
+.firstArticle {
+    width: 800px;
+    height: 300px;
+    display: flex;
+    float: left;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.secondArticle {
+    width: 300px;
+    height: 500px;
+    display: flex;
+    float: right;
+    margin-right: 50px;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.thirdArticle {
+    width: 300px;
+    height: 700px;
+    display: flex;
+    float: right;
+    margin-right: 50px;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.fourthArticle {
+    width: 300px;
+    height: 350px;
+    display: flex;
+    float: left;
+    margin-top: 50px;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.fifthArticle {
+    width: 450px;
+    height: 350px;
+    display: flex;
+    float: left;
+    margin: 50px 0 0 50px;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.allArticles {
+    width: 300px;
+    height: 150px;
+    display: flex;
+    float: right;
+    margin: -150px 50px 0 0;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+/*---------------------------------- Details Article -----------------------------------*/
 
 .detailsContent {
     position: relative;
@@ -201,6 +271,8 @@ li a {
     position: relative;
     margin-top: 3%;
 }
+
+/*---------------------------- Create + Edit Article ------------------------------*/
 
 .create-articleContent {
     position: relative;
