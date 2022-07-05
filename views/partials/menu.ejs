@@ -3,9 +3,10 @@
 
     <h2>Menu</h2>
     
-    <ul>
-        <% if (articles.length > 0) { %>
-            <% articles.forEach(article => { %>
+    <button type="button" class="side">Neuste ▼</button>
+    <div class="Content">
+        <% if (create.length > 0) { %>
+            <% create.slice(0, 5).forEach(article => { %>
             	<li>
                     <a href="/articles/<%= article._id %>">
                         <p class="menu"><%= article.title %></p>
@@ -13,10 +14,58 @@
                 </li>
             <% }) %>
         <% } else { %>
-            <p>No Articles</p>
+            <p>Keine passenden Artikel gefunden</p>
         <% } %>
-        
-    </ul>
+    </div>
+
+    <button type="button" class="side">Zuletzt verändert ▼</button>
+    <div class="Content">
+        <% if (update.length > 0) { %>
+            <% update.slice(0, 5).forEach(article => { %>
+            	<li>
+                    <a href="/articles/<%= article._id %>">
+                        <p class="menu"><%= article.title %></p>
+                    </a>
+                </li>
+            <% }) %>
+        <% } else { %>
+            <p>Keine passenden Artikel gefunden</p>
+        <% } %>
+    </div>
+
+    <button type="button" class="side">Inhalt mit "Test" ▼</button>
+    <div class="Content">
+        <% if (all.length > 0) { %>
+            <% all.slice(0, 5).forEach(article => { %>
+                <% console.log(article.keywords) %>
+                <% if (article.keywords == "test") { %>
+                    <li>
+                        <a href="/articles/<%= article._id %>">
+                            <p class="menu"><%= article.title %></p>
+                        </a>
+                    </li>
+                <% } %>
+            <% }) %>
+        <% } else { %>
+            <p>Keine passenden Artikel gefunden</p>
+        <% } %>
+    </div>
+
+    <button type="button" class="side">Alle Artikel ▼</button>
+    <div class="Content">
+        <% if (all.length > 0) { %>
+            <% all.forEach(article => { %>
+            	<li>
+                    <a href="/articles/<%= article._id %>">
+                        <p class="menu"><%= article.title %></p>
+                    </a>
+                </li>
+            <% }) %>
+        <% } else { %>
+            <p>Keine passenden Artikel gefunden</p>
+        <% } %>
+    </div>
+
 </div>
 
 <div id="navTop">
@@ -28,3 +77,21 @@
         </ul>
     </nav>
 </div>
+
+
+<script>
+    let coll = document.getElementsByClassName("side");
+    let i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    });
+} 
+</script>

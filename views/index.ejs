@@ -7,8 +7,8 @@
   <div class="articlesContent">
     <h2><%= heading %></h2>
 
-    <% if (articlesMain.length > 0) { %>
-      <% articlesMain.slice(0, 1).forEach(article => { %>
+    <% if (all.length > 0) { %>
+      <% all.slice(0, 1).forEach(article => { %>
         <div class="firstArticle">
           <a class="single" href="/articles/<%= article._id %>">
             <h3 class="title"><%= article.title %></h3>
@@ -18,7 +18,7 @@
         </div>
         <% }) %>
     
-      <% articlesMain.slice(1, 2).forEach(article => { %>
+      <% all.slice(1, 2).forEach(article => { %>
         <div class="secondArticle">
           <a class="single" href="/articles/<%= article._id %>">
             <h3 class="title"><%= article.title %></h3>
@@ -28,7 +28,7 @@
         </div>
         <% }) %>
     
-      <% articlesMain.slice(2, 3).forEach(article => { %>
+      <% all.slice(2, 3).forEach(article => { %>
         <div class="thirdArticle">
           <a class="single" href="/articles/<%= article._id %>">
             <h3 class="title"><%= article.title %></h3>
@@ -38,7 +38,7 @@
         </div>
         <% }) %>
 
-      <% articlesMain.slice(3, 4).forEach(article => { %>
+      <% all.slice(3, 4).forEach(article => { %>
         <div class="fourthArticle">
           <a class="single" href="/articles/<%= article._id %>">
             <h3 class="title"><%= article.title %></h3>
@@ -48,7 +48,7 @@
         </div>
         <% }) %>
     
-      <% articlesMain.slice(4, 5).forEach(article => { %>
+      <% all.slice(4, 5).forEach(article => { %>
         <div class="fifthArticle">
           <a class="single" href="/articles/<%= article._id %>">
             <h3 class="title"><%= article.title %></h3>
@@ -59,7 +59,7 @@
         <% }) %>
     
         <div class="allArticles">
-    
+          
         </div>
 
     <% } else { %>

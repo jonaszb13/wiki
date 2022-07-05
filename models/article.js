@@ -18,6 +18,10 @@ const articleSchema = new Schema({
         type: String,
         required: true,
     },
+    clicks: {
+        type: Number,
+        required: false,
+    },
 }, { timestamps: true });
 
 const Article = mongoose.model('Article', articleSchema);

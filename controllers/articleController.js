@@ -1,59 +1,66 @@
 const Article = require('../models/article');
-const Old = require('../models/old')
+const Old = require('../models/old');
 
+let cAt;
+let uAt;
+let all;
 
-const article_index = (req, res) => {
-  Article.find().sort({ createdAt: +1 })
+async function menu() {
+console.log("menu running")
+  Article.find().sort({ createdAt: -1 })
     .then(result => {
-      res.render('index', { articles: result, articlesMain: result, heading: "Alle Artikel", title: 'All articles' });
+      cAt = result
+      Article.find().sort({ updatedAt: -1 })
+        .then(result => {
+          uAt = result
+          console.log("update")
+          Article.find()
+            .then(result => {
+              all = result
+              console.log("all")  
+            })
+        })
     })
-    .catch(err => {
-      console.log(err);
-    });
+  };
+
+
+const article_index = async (req, res) => {
+  await menu();
+  console.log(cAt);
+  await res.render('index', { create: cAt, update: uAt, all: all, heading: "Alle Artikel", title: 'Alle Artikel' });
 }
 
-const article_search = (req, res) => {
-  Article.find().sort({ createdAt: +1 })
-    .then(result => {
-      let query = req.query.search
-      console.log(query);
-      Article.find({ title: { $regex: query, $options: "i" } }, function(err, docs) {
-        console.log(docs)
-        res.render('index', { articles: result, articlesMain: docs, search: query, heading: 'Suchergebnisse für: "' + query + '"', title: 'Artikel mit: "' + query + '"' })
-      })
-      
-    })
-  
+
+const article_search = async (req, res) => {
+  await menu();
+  let query = req.query.search
+  console.log(query);
+  Article.find({ title: { $regex: query, $options: "i" } }, function(err, docs) {
+    console.log(docs)
+    res.render('index', { create: cAt, update: uAt, all: all, searchRes: docs, search: query, heading: 'Suchergebnisse für: "' + query + '"', title: 'Artikel mit: "' + query + '"' })
+  }) 
 }
 
 
 let test
 
-const article_details = (req, res) => {
+const article_details = async (req, res) => {
+  await menu();
   const id = req.params.id;
   Article.findById(id)
     .then(result => {
       test = result;
-      Article.find().sort({ createdAt: +1})
-        .then(result => {
-          res.render('details', {articles: result, article: test, title: 'Article Details' })
-      })
+      res.render('details', { create: cAt, update: uAt, all: all, article: test, title: 'Article Details' })
     })
     .catch(err => {
       console.log(err);
       res.render('404', { title: 'Article not found' });
     });
-  
 }
 
-const article_create_get = (req, res) => {
-  Article.find().sort({ created: +1 })
-    .then(result => {
-      res.render('create', { articles: result, title: 'Create a new article' });
-    })
-    .catch(err => {
-      console.log(err);
-    })
+const article_create_get = async (req, res) => {
+  await menu();
+  res.render('create', { create: cAt, update: uAt, all: all, title: 'Create a new article' });
 }
 
 const article_create_post = (req, res) => {
@@ -67,7 +74,8 @@ const article_create_post = (req, res) => {
     });
 }
 
-const article_edit_get = (req, res) => {
+const article_edit_get = async (req, res) => {
+  await menu();
   const id = req.params.id;
       Article.findById(id)
       .then(result => {
@@ -75,11 +83,12 @@ const article_edit_get = (req, res) => {
         Old.find({ old_id: id})
           .then(result => {
             oldID = result
-            Article.find().sort({ createdAt: +1})
-          .then(result => {
-            res.render('edit', {articles: result, olds: oldID, article: test, title: 'Artikel bearbeiten' })
+            res.render('edit', { create: cAt, update: uAt, all: all, olds: oldID, article: test, title: 'Artikel bearbeiten' })
           })
-        })
+          .catch(err => {
+            console.log(err);
+            res.render('404', { title: 'Article not found' })
+          })
       })
       .catch(err => {
         console.log(err);
@@ -137,4 +146,5 @@ module.exports = {
   article_edit_get,
   article_edit_post,
   test_evn,
+  menu,
 }
