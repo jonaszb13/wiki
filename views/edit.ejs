@@ -12,20 +12,24 @@
     <input placeholder="Kurzfassung: " type="text" id="snippet" name="snippet" value="<%= article.snippet %>" requierd>
     <textarea placeholder="Body: " id="body" name="body" required><%= article.body %></textarea>
     <button class="btnEdit">Änderungen speichern</button>
+    <a class="btnVer" onclick="toggleNav()">Ältere Versionen laden</a>
     <a class="btnBack" href="/articles/<%= article._id %>">Zurück</a>
-    <div class="versions">
-      <% if (olds.length > 0) { %>
-        <% let count = 0 %>
-        <% olds.forEach( old => { %>
-          <% count = count + 1 %>
-            <a class="version" onclick="restore('<%= old.title %>', '<%= old.keywords %>', '<%= old.snippet %>', '<%= old.body %>')">Version <%= count %></a>
-        <% }) %>
-      <% } else { %>
-        <p>Keine vorherigen Versionen vorhanden</p>
-      <% } %>
-    </div>
-
 </form>
+
+
+<div class="sideBar">
+  <div class="versions">
+    <% if (olds.length > 0) { %>
+      <% let count = 0 %>
+      <% olds.forEach( old => { %>
+        <% count = count + 1 %>
+          <a class="version" onclick="restore('<%= old.title %>', '<%= old.keywords %>', '<%= old.snippet %>', '<%= old.body %>')">Version <%= count %></a>
+      <% }) %>
+    <% } else { %>
+      <p>Keine vorherigen Versionen vorhanden</p>
+    <% } %>
+  </div>
+</div>
 
 <script>
 
@@ -37,7 +41,50 @@
   }
 </script>
 
-<%- include("./partials/search.ejs") %>
+<script>
+  let toggleNavStatus = false;
+
+let toggleNav = function() {
+  let getSidebar = document.querySelector(".sideBar");
+  let getSidebarLink = document.querySelectorAll(".sideBar a");
+  let getSidebarText = document.querySelector(".versions p")
+  
+  if (toggleNavStatus === false) {
+    getSidebar.style.width = "200px";
+
+    if (getSidebarText != null ) {
+      getSidebarText.style.opacity = "1";
+    }
+
+    let arrayLength = getSidebarLink.length;
+    for(let i = 0; i < arrayLength; i++) {
+      getSidebarLink[i].style.opacity = "1";
+    }
+    
+    toggleNavStatus = true;
+    
+  }
+
+  else if (toggleNavStatus === true) {
+    getSidebar.style.width = "0px";
+
+    if (getSidebarText != null) {
+      getSidebarText.style.opacity = "0"
+    }
+
+    let arrayLength = getSidebarLink.length;
+    for(let i = 0; i < arrayLength; i++) {
+      getSidebarLink[i].style.opacity = "0";
+    }
+    
+    toggleNavStatus = false;
+    
+  }  
+
+}
+</script>
+
+<%- include("./partials/searchBar.ejs") %>
 
 
 </body>

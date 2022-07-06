@@ -44,11 +44,12 @@
                             <p class="menu"><%= article.title %></p>
                         </a>
                     </li>
-                <% } %>
+                <% } %>    
             <% }) %>
         <% } else { %>
             <p>Keine passenden Artikel gefunden</p>
         <% } %>
+        
     </div>
 
     <button type="button" class="side">Alle Artikel ▼</button>
@@ -71,7 +72,7 @@
 <div id="navTop">
     <nav id="topNav" >
         <ul>
-            <li><a class="user" href="">Benutzer</a></li>
+            <li><a class="user" href="/articles/login">Benutzer</a></li>
             <li><a href="/articles/create">Neuen Artikel erstellen</a></li>
             <input type="text" placeholder="Suche..." id="searchBar">
         </ul>
@@ -79,7 +80,11 @@
 </div>
 
 
+
+
 <script>
+
+
     let coll = document.getElementsByClassName("side");
     let i;
 
@@ -94,4 +99,58 @@
         }
     });
 } 
+</script>
+
+
+<script>
+/*
+function click(){
+
+let childNode0 = document.getElementsByClassName('side')[0];
+console.log(childNode0)
+if (childNode0.classList == 'side active') {
+    sessionStorage.setItem('childNode0', true)
+} if (childNode0.classList == 'side') {
+    sessionStorage.setItem('childNode0', false)
+} if (sessionStorage.getItem('childNode0') == true) {
+    console.log("click")
+    childNode0.click();
+    sessionStorage.setItem('childNode0', false)
+}
+
+let childNode1 = document.getElementsByClassName('side')[1];
+if (childNode1.classList == 'side active') {
+    sessionStorage.setItem('childNode1', true)
+} if (sessionStorage.getItem('childNode1') == true) {
+    childNode1.click();
+    sessionStorage.setItem('childNode1', false)
+}
+
+let childNode2 = document.getElementsByClassName('side')[2];
+if (childNode2.classList == 'side active') {
+    sessionStorage.setItem('childNode2', true)
+} if (sessionStorage.getItem('childNode2') == true) {
+    childNode1.click();
+    sessionStorage.setItem('childNode2', false)
+}
+
+let childNode3 = document.getElementsByClassName('side')[3];
+if (childNode3.classList == 'side active') {
+    sessionStorage.setItem('childNode3', true)
+} if (sessionStorage.getItem('childNode3') == true) {
+    childNode1.click();
+    sessionStorage.setItem('childNode3', false)
+}
+}
+
+
+for(i = 0; i < coll.length; i++) {
+coll[i].addEventListener("click", function click() { 
+    click()
+}
+)}
+
+window.onload = click()
+
+*/
 </script>

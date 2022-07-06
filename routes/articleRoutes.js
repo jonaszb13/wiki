@@ -3,6 +3,7 @@ const articleController = require('../controllers/articleController');
 
 const router = express.Router();
 
+router.get('/login', articleController.login)
 router.get('/create', articleController.article_create_get);
 router.get('/edit/:id', articleController.article_edit_get);
 router.get('/find', articleController.article_search);

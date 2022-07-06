@@ -1,0 +1,37 @@
+<html lang="de">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/menu.ejs") %>
+
+
+  <div class="articlesContent">
+    <h2><%= heading %></h2>
+
+    <% if (searchRes.length > 0) { %>
+      <% searchRes.forEach(article => { %>
+        <div class="searchRes">
+          <a class="single" href="/articles/<%= article._id %>">
+            <h3 class="title"><%= article.title %></h3>
+            <p class="snippet"><%= article.snippet %></p>
+            <p class="body"><%= article.body %></p>
+          </a>
+        </div>
+        <% }) %>
+    
+     
+
+    <% } else { %>
+      <p>Keine Suchergebnisse für <%= search %><p>
+    <% } %>
+
+    
+
+
+  </div>
+
+  <%- include("./partials/searchBar.ejs") %>
+  
+
+</body>
+</html>
