@@ -22,11 +22,11 @@ app.use((req, res, next) => {
   next();
 });
 
-const db = require('./app/models');
+const db = require('./models');
 const dbConfig = require('./config/db.config');
 const Role = db.role;
 db.mongoose
-  .connect(`mongodb+srv://${dbConfig.PASS}:${dbConfig.PASS}@${dbConfig.DB}`, {
+  .connect(`mongodb+srv://${dbConfig.USER}:${dbConfig.PASS}@${dbConfig.DB}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -35,9 +35,27 @@ db.mongoose
     initial();
   })
   .catch(err => {
-    console.err("Connection error", err);
+    console.error("Connection error", err);
     process.exit();
   });
+
+app.get('/', (req, res) => {
+  res.redirect('/articles');
+});
+
+app.use('/articles', articleRoutes)
+
+app.use((req, res) => {
+  res.status(404).render('404', { title: '404' });
+});
+
+require('./routes/auth.routes')(app);
+require('./routes/user.routes')(app);
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
+});
 
 function initial() {
   Role.estimatedDocumentCount((err, count) => {
@@ -69,18 +87,3 @@ function initial() {
     }
   });
 }
-
-app.get('/', (req, res) => {
-  res.redirect('/articles');
-});
-
-app.use('/articles', articleRoutes)
-
-app.use((req, res) => {
-  res.status(404).render('404', { title: '404' });
-});
-
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});

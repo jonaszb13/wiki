@@ -5,4 +5,5 @@ const Role = mongoose.model(
         name: String
     })
 );
+console.log(Role)
 module.exports = Role;
