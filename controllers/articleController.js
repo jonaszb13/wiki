@@ -1,5 +1,7 @@
 const Article = require('../models/article');
 const Old = require('../models/old');
+const { authJwt } = require("../middlewares");
+const { useRouteMatch } = require('react-router-dom');
 
 let cAt;
 let uAt;
@@ -30,7 +32,7 @@ function menu() {
 const article_index = async (req, res) => {
   const result = await menu()
     console.log("Promies resolved")
-    res.render('index', { create: cAt, update: uAt, all: all, heading: "Alle Artikel", title: 'Alle Artikel' });
+      res.render('index', { create: cAt, update: uAt, all: all, heading: "Alle Artikel", title: 'Alle Artikel' });
 }
 
 
@@ -143,7 +145,13 @@ const login = (req, res) => {
   res.render('login', { title: 'Login'})
 }
 
+const register = (req, res) => {
+  res.render('register', { title: 'Registrieren', message: ""})
+}
 
+const userLog = (req, res) => {
+  res.render('user')
+}
 
 module.exports = {
   article_index, 
@@ -155,4 +163,6 @@ module.exports = {
   article_edit_get,
   article_edit_post,
   login,
+  register,
+  userLog,
 }

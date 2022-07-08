@@ -2,20 +2,22 @@
 <%- include("./partials/head.ejs") %>
 
 <body>
-    <form action="/api/auth/signin" method="post">
+    <form action="/api/auth/signup" method="post">
       
         <div class="container">
           <input type="text" placeholder="Enter Username" name="username" required>
       
           <input type="password" placeholder="Enter Password" name="password" required>
       
-          <button type="submit">Login</button>
+          <button type="submit">Registrieren</button>
+
+          <p><%= message%></p>
 
         </div>
 
       </form> 
 
-      <a href="/articles/register">Noch keinen Account, jetzt registrieren</a>
+      <a href="/articles/login">Schon einen Account, jetzt einloggen</a>
 </body>
 
 </html>

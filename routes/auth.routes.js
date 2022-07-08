@@ -11,17 +11,17 @@ module.exports = function(app) {
     });
 
     console.log("working_5")
-    const test = app.post(
+    app.post(
         "/api/auth/signup",
         [
             verifySignUp.checkDuplicateUsername,
-            verifySignUp.checkRolesExisted
         ],
         controller.signup
     );
 
     app.post("/api/auth/signin", controller.signin);
 
-    module.exports = test;
+    app.post("/api/auth/logout", controller.logout)
+
 };
 
