@@ -4,13 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-<<<<<<< HEAD
+
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --ext *"
-=======
-    "start": "react-scripts start",
-    "test": "echo \"Error: no test specified\" && exit 1"
->>>>>>> fea0432037f24c79bd321b0fe8a55d7c48cf2606
+
   },
   "keywords": [],
   "author": "",
