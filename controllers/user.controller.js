@@ -1,12 +1,7 @@
-exports.allAccess = (req, res) => {
-    res.status(200).send("Öffentlicher Bereich");
-};
+const express = require('express');
+
+
+
 exports.userBoard = (req, res) => {
-    res.status(200).send("Benutzer Bereich");
-};
-exports.adminBoard = (req, res) => {
-    res.status(200).send("Admin Bereich");
-};
-exports.moderatorBoard = (req, res) => {
-    res.status(200).send("Moderator Bereich");
+    res.render('user', {})
 };
